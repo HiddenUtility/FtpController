@@ -4,13 +4,20 @@ namespace FtpController.test
 {
     public class TestDirMaker
     {
+        private const int WidthNumber = 3;
+
         static public void Test(ConnectingInformation info)
         {
 
             DirectoryMaker maker = new DirectoryMaker(info);
 
+            for (int i = 0; i < 5; i++){
+                maker.MakeDirectory($"test{i.ToString("D"+ WidthNumber)}");
 
-            maker.MakeDirectory("test");
+            }
+
+            Console.WriteLine("DirectoryMaker OK");
+
 
 
         }

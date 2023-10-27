@@ -22,6 +22,8 @@ namespace FtpController.test
                 TestFtp.Test(info);
                 // DirectoryMaker
                 TestDirMaker.Test(info);
+                // DirnameList
+                TestDirnameList.Test(info);
 
 
             }catch(Exception ex){
