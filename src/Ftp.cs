@@ -6,7 +6,7 @@ namespace FtpController
 
     public class Ftp
     {
-        ConnectingInformation Info;
+        readonly ConnectingInformation Info;
         bool Connecting;
         public Ftp(ConnectingInformation info)
         {
@@ -14,10 +14,10 @@ namespace FtpController
             this.Connecting = false;
         }
 
-        public void connect()
+        public void Connect()
         {
-            Uri rootUri = new Uri(string.Format("ftp://{}", Info.Ip));
-            FtpWebRequest ftpWebRequest = (FtpWebRequest)WebRequest.Create(rootUri);
+
+            FtpWebRequest ftpWebRequest = (FtpWebRequest)WebRequest.Create(Info.RootUri);
             ftpWebRequest.Credentials = new NetworkCredential(Info.Username, Info.Password);
             ftpWebRequest.Method = WebRequestMethods.Ftp.ListDirectory;
             ftpWebRequest.KeepAlive = true;
@@ -39,10 +39,10 @@ namespace FtpController
 
             }
         }
-        public void disconnect()
+        public void Disconnect()
         {
-            Uri rootUri = new Uri(string.Format("ftp://{}", Info.Ip));
-            FtpWebRequest ftpWebRequest = (FtpWebRequest)WebRequest.Create(rootUri);
+
+            FtpWebRequest ftpWebRequest = (FtpWebRequest)WebRequest.Create(Info.RootUri);
             ftpWebRequest.Credentials = new NetworkCredential(Info.Username, Info.Password);
             ftpWebRequest.Method = WebRequestMethods.Ftp.ListDirectory;
             ftpWebRequest.KeepAlive = false;
@@ -63,7 +63,7 @@ namespace FtpController
             }
         }
 
-        public bool isConnecting()
+        public bool IsConnecting()
         {
             return Connecting;
         }

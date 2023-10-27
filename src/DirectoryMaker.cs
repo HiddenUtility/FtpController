@@ -9,5 +9,10 @@ namespace FtpController
         {
             this.Info = ConnectingInformation;
         }
+
+        public void MakeDirectory(string Dirname)
+        {
+            
+        }
     }
 }
